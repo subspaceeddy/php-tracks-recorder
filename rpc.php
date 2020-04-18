@@ -16,6 +16,14 @@ if ($_config['sql_type'] == 'mysql') {
     require_once('lib/db/MySqlPdo.php');
     /** @var MySqlPdo $sql */
     $sql = new MySqlPdo($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
+} elseif ($_config['sql_type'] == 'pgsql') {
+    require_once('lib/db/PgSql.php');
+    /** @var PgSql $sql */
+    $sql = new PgSql($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
+} elseif ($_config['sql_type'] == 'pgsqlpdo') {
+    require_once('lib/db/PgSqlPdo.php');
+    /** @var PgSqlPdo $sql */
+    $sql = new PgSqlPdo($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
 } elseif ($_config['sql_type'] == 'sqlite') {
     require_once('lib/db/SQLite.php');
     /** @var SQLite $sql */

@@ -23,8 +23,14 @@ if ($_config['sql_type'] == 'mysql') {
     require_once('lib/db/MySql.php');
     $sql = new MySql($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
 } elseif ($_config['sql_type'] == 'mysqlpdo') {
-    require_once('lib/db/MySqlPdo.php.php');
+    require_once('lib/db/MySqlPdo.php');
     $sql = new MySqlPdo($_config['sql_db']);
+} elseif ($_config['sql_type'] == 'pgsql') {
+    require_once('lib/db/PgSql.php');
+    $sql = new PgSql($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
+} elseif ($_config['sql_type'] == 'pgsqlpdo') {
+    require_once('lib/db/PgSqlPdo.php');
+    $sql = new PgSqlPdo($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
 } elseif ($_config['sql_type'] == 'sqlite') {
     require_once('lib/db/SQLite.php');
     $sql = new SQLite($_config['sql_db']);
@@ -72,18 +78,18 @@ catch(Exception $e){
 }
 
 
-
+/*
 //getting last known location for other tracker ids in database
 $friends = array();
-if(count($records)>0) $friends = $recorder->getFriendsLocation($records[0]);
-
+if(count($records)>0) $friends = $recorder->getFriendsLocation($records[0], $sql);
+*/
 $response = $recorder->buildResponseArray($response_msg, $http_response_code);
-
+/*
 if(count($friends) > 0) {
     //add friends data to response array
     $response = array_merge($response, $friends);
 }
-
+*/
 http_response_code($http_response_code);
 print json_encode($response);
 
