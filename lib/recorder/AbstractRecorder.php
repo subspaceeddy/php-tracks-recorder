@@ -45,7 +45,7 @@ abstract class AbstractRecorder
   abstract public function formatRecordToSQLStructure(AbstractRecordStructure $record_struct): SQLStructure;
 
   //return latest location where trackerID is different from record provided
-  abstract public function getFriendsLocation(AbstractRecordStructure $record_struct): array;
+  abstract public function getFriendsLocation(AbstractRecordStructure $record_struct, AbstractDb $sql): array;
 
   //build response sent back as json array
   abstract public function buildResponseArray(string $response_msg, int $response_code): array;

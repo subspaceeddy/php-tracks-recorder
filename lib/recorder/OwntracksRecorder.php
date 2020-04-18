@@ -109,7 +109,7 @@ class OwntracksRecorder extends AbstractRecorder
     return $sqlRecord;
   }
 
-  public function getFriendsLocation(AbstractRecordStructure $record_struct): array
+  public function getFriendsLocation(AbstractRecordStructure $record_struct, AbstractDb $sql): array
   {
     return $sql->getFriends($record_struct->getTrackerID());
   }

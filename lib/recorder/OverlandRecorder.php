@@ -106,7 +106,7 @@ class OverlandRecorder extends AbstractRecorder
     return $sqlRecord;
   }
 
-  public function getFriendsLocation(AbstractRecordStructure $record_struct): array
+  public function getFriendsLocation(AbstractRecordStructure $record_struct, AbstractDb $sql): array
   {
     // friends feature not implemented in Overland iOS app
     $friends = array();
