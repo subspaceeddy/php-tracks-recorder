@@ -21,3 +21,5 @@ CREATE TABLE locations (
   osm_id int DEFAULT NULL,
   display_name text DEFAULT NULL
 );
+CREATE INDEX accuracy_index ON locations(accuracy);
+CREATE INDEX tracker_id ON locations(tracker_id, epoch);
