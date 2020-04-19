@@ -25,9 +25,6 @@ if ($_config['sql_type'] == 'mysql') {
 } elseif ($_config['sql_type'] == 'mysqlpdo') {
     require_once('lib/db/MySqlPdo.php');
     $sql = new MySqlPdo($_config['sql_db']);
-} elseif ($_config['sql_type'] == 'pgsql') {
-    require_once('lib/db/PgSql.php');
-    $sql = new PgSql($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
 } elseif ($_config['sql_type'] == 'pgsqlpdo') {
     require_once('lib/db/PgSqlPdo.php');
     $sql = new PgSqlPdo($_config['sql_db'], $_config['sql_host'], $_config['sql_user'], $_config['sql_pass'], $_config['sql_prefix']);
