@@ -28,7 +28,7 @@ class OwntracksRecordStructure extends AbstractRecordStructure {
 class OwntracksRecorder extends AbstractRecorder
 {
 
-  public function getTrackerID(AbstractRecordStructure $rec): int
+  public function getTrackerID(AbstractRecordStructure $rec): string
   {
     return strval($rec->tid);
   }
@@ -111,7 +111,7 @@ class OwntracksRecorder extends AbstractRecorder
 
   public function getFriendsLocation(AbstractRecordStructure $record_struct, AbstractDb $sql): array
   {
-    return $sql->getFriends($record_struct->getTrackerID());
+    return $sql->getFriends($this->getTrackerID($record_struct));
   }
 
   public function buildResponseArray(string $response_msg, int $response_code): array

@@ -36,7 +36,7 @@ abstract class AbstractRecorder
   }
 
   //return tracker ID from structure
-  abstract public function getTrackerID(AbstractRecordStructure $record_struct): int;
+  abstract public function getTrackerID(AbstractRecordStructure $record_struct): string;
 
   //parse payload content & générate array of structures
   abstract public function parsePayload(string $payload): array;

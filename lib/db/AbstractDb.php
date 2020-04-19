@@ -24,7 +24,7 @@ abstract class AbstractDb
         }
 
         return ((count($result) > 0) || $already_better_accuracy);
-        
+
     }
 
     public function addRecord(SQLStructure $sql_record): bool {
@@ -62,10 +62,10 @@ abstract class AbstractDb
 
     public function getFriends(string $trackerId): array
     {
-        $sql = "select * from ".$_config['sql_prefix']."locations a JOIN (SELECT MAX(epoch) AS epoch, tracker_id FROM ' . $this->prefix . 'locations WHERE tracker_id != ? GROUP BY tracker_id) b ON a.epoch = b.epoch AND a.tracker_id = b.tracker_id";
-        $sql = 'SELECT * FROM ' . $this->prefix . 'locations WHERE epoch >= ? AND epoch <= ? AND accuracy < ? AND altitude >=0 ORDER BY tracker_id, epoch ASC';
+        // this will return the most recent loction of our friends, regardless of when that was
+        $sql = "select * from " . $_config['sql_prefix'] . "locations a JOIN (SELECT MAX(epoch) AS epoch, tracker_id FROM " . $this->prefix . "locations WHERE tracker_id != ? GROUP BY tracker_id) b ON a.epoch = b.epoch AND a.tracker_id = b.tracker_id";
+        //$sql = 'SELECT * FROM ' . $this->prefix . 'locations WHERE epoch >= ? AND epoch <= ? AND accuracy < ? AND altitude >=0 ORDER BY tracker_id, epoch ASC';
         $result = $this->query($sql, array($trackerId));
-
 
         $friends = array();
 

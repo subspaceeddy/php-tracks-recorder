@@ -78,18 +78,18 @@ catch(Exception $e){
 }
 
 
-/*
+
 //getting last known location for other tracker ids in database
 $friends = array();
 if(count($records)>0) $friends = $recorder->getFriendsLocation($records[0], $sql);
-*/
+
 $response = $recorder->buildResponseArray($response_msg, $http_response_code);
-/*
+
 if(count($friends) > 0) {
     //add friends data to response array
     $response = array_merge($response, $friends);
 }
-*/
+
 http_response_code($http_response_code);
 print json_encode($response);
 
